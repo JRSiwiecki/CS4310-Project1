@@ -1,7 +1,8 @@
-def job_file_to_array():
-    JOB_FOLDER_PATH = "job-files/"
-    NUMBER_OF_BATCHES = 3
+JOB_FOLDER_PATH = "job-files/"
+NUMBER_OF_BATCHES = 3
 
+
+def job_file_to_array():
     batch_list = []
 
     for i in range(1, NUMBER_OF_BATCHES + 1):
