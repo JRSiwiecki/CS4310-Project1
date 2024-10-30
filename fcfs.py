@@ -33,9 +33,7 @@ def run_scheduler(batch_list):
 
 
 def work_on_job(job_time):
-    job_time = job_time - job_time
-
     print("Doing " + str(job_time) + " Units of Work")
+    job_time = job_time - job_time
     print("Time Left: " + str(job_time))
-
     return job_time
