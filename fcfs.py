@@ -11,16 +11,17 @@ def run_scheduler(batch_list):
         job_complete_time = 0
 
         for job_number, job_time in enumerate(job_list):
-            print("-----------")
             if job_number in completed_job_indexes:
                 continue
 
+            print("-----------")
             print("Job #" + str(job_number + 1) + " Scheduled")
 
             job_time = work_on_job(job_time)
 
             if job_time == 0:
                 print("Job #" + str(job_number + 1) + " Complete")
+
                 job_complete_time += job_list[job_number]
                 completed_job_indexes.append(job_number)
 
@@ -32,7 +33,9 @@ def run_scheduler(batch_list):
 
 
 def work_on_job(job_time):
-    print("Doing " + str(job_time) + " Units of Work")
     job_time = job_time - job_time
+
+    print("Doing " + str(job_time) + " Units of Work")
     print("Time Left: " + str(job_time))
+
     return job_time
