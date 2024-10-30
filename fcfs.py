@@ -1,4 +1,6 @@
 def run_scheduler(batch_list):
+    print("----------- FCFS Scheduler -----------")
+
     average_turnaround_times = []
 
     for batch_number, job_list in enumerate(batch_list):
@@ -25,7 +27,8 @@ def run_scheduler(batch_list):
         average_turnaround_time = round(job_complete_time / len(job_list), 2)
         average_turnaround_times.append(average_turnaround_time)
 
-    return average_turnaround_times
+    print("-----------")
+    print("Average Turnaround Time:", average_turnaround_times)
 
 
 def work_on_job(job_time):
