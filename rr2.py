@@ -1,5 +1,5 @@
 def run_scheduler(batch_list):
-    print("----------- Round Robin (q=2) Scheduler -----------")
+    print("----------- Round Robin 2 Scheduler -----------")
     average_turnaround_times = []
 
     for batch_number, job_list in enumerate(batch_list):
