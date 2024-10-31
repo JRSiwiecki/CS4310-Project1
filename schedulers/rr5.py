@@ -12,6 +12,8 @@ def run_scheduler(batch_list):
     """
     print("----------- Round Robin 5 Scheduler -----------")
 
+    average_turnaround_times = []
+
     # Run scheduler for each job list in batch_list
     for batch_number, job_list in enumerate(batch_list):
         print("##### batch" + str(batch_number + 1) + ".txt #####")
@@ -57,9 +59,12 @@ def run_scheduler(batch_list):
                 print("Current Time:", current_time)
 
         average_turnaround_time = round(sum(job_turnaround_times) / len(job_list), 2)
+        average_turnaround_times.append(average_turnaround_time)
 
         print("\nAverage Turnaround Time:", average_turnaround_time, "Units of Work")
         print("----------------------")
+
+    return average_turnaround_times
 
 
 def work_on_job(job_time):
