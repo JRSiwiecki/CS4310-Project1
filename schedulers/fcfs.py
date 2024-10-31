@@ -1,5 +1,5 @@
 def run_scheduler(batch_list):
-    """Runs the First-Come-First-Serve (FCFS) Scheduler algorithm
+    """Runs the First-Come-First-Serve (FCFS) Scheduler algorithm.
 
     Args:
         batch_list (List[List[int]]): A list where each inner list contains
