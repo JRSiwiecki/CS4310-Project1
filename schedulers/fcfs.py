@@ -1,5 +1,6 @@
 def run_scheduler(batch_list):
     """Runs the First-Come-First-Serve (FCFS) Scheduler algorithm.
+    This algorithm completes jobs as they appear.
 
     Args:
         batch_list (List[List[int]]): A list where each inner list contains
@@ -32,6 +33,8 @@ def run_scheduler(batch_list):
                 + " Units of Work"
             )
 
+            # No need to check in if job_time left is 0 or not, as FCFS
+            # will complete whole job as it works on them.
             current_time += job_time
             job_list_copy[job_number] = work_on_job(job_list_copy[job_number])
             completed_job_indexes.append(job_number)
@@ -48,7 +51,7 @@ def run_scheduler(batch_list):
 
 
 def work_on_job(job_time):
-    """Do work on job based on job_time
+    """Do work on job based on job_time. Return the amount of time left on the job.
 
     Args:
         job_time (int): Length of job.

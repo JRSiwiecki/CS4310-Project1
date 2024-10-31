@@ -36,6 +36,7 @@ def job_file_to_array():
 def main():
     """_summary_
     Runs job_file_to_array then runs each scheduler.
+    Note that we assume that all jobs arrive at the same time (0).
     """
     batch_list = job_file_to_array()
 

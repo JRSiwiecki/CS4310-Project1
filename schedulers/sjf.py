@@ -1,5 +1,6 @@
 def run_scheduler(batch_list):
     """Runs the Shortest-Job-First (SJF) Scheduler algorithm.
+    This algorithm compelets the shortest jobs it sees first.
 
     Args:
         batch_list (List[List[int]]): A list where each inner list contains
@@ -47,6 +48,8 @@ def run_scheduler(batch_list):
                 + " Units of Work"
             )
 
+            # No need to check in if job_time left is 0 or not, as SJF
+            # will complete whole job as it works on them.
             current_time += job_list[shortest_job_number]
             job_list_copy[shortest_job_number] = work_on_job(
                 job_list_copy[shortest_job_number]
@@ -65,7 +68,7 @@ def run_scheduler(batch_list):
 
 
 def work_on_job(job_time):
-    """Do work on job based on job_time
+    """Do work on job based on job_time. Return the amount of time left on the job.
 
     Args:
         job_time (int): Length of job.
