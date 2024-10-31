@@ -1,3 +1,6 @@
+"""Module containing code to run the RR5 scheduler algorithm."""
+
+
 def run_scheduler(batch_list):
     """Runs the Round-Robin-5 (RR5) Scheduler algorithm.
     This algorithm goes through every job in a list and does 5 (or less if the job

@@ -1,3 +1,5 @@
+"""Module containing code to run the scheduler algorithms."""
+
 from schedulers import fcfs, sjf, rr2, rr5
 
 JOB_FOLDER_PATH = "job-files/"

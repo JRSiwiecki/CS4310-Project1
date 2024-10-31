@@ -1,3 +1,6 @@
+"""Module containing code to run the FCFS scheduler algorithm."""
+
+
 def run_scheduler(batch_list):
     """Runs the First-Come-First-Serve (FCFS) Scheduler algorithm.
     This algorithm completes jobs as they appear.

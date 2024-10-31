@@ -1,3 +1,6 @@
+"""Module containing code to run the SJF scheduler algorithm."""
+
+
 def run_scheduler(batch_list):
     """Runs the Shortest-Job-First (SJF) Scheduler algorithm.
     This algorithm compelets the shortest jobs it sees first.

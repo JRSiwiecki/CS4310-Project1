@@ -1,3 +1,6 @@
+"""Module containing code to run the RR2 scheduler algorithm."""
+
+
 def run_scheduler(batch_list):
     """Runs the Round-Robin-2 (RR2) Scheduler algorithm.
     This algorithm goes through every job in a list and does 2 (or less if the job
