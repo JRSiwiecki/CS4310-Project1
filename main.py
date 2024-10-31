@@ -36,7 +36,7 @@ def job_file_to_array():
     return batch_list
 
 
-def generate_random_batch_list(num_batches=20, max_job_length=25):
+def generate_random_batch_list(num_batches=20, max_job_length=25, job_count=5):
     """
     Generate a list of random job batches for testing the scheduler.
     Each batch will have either 5, 10, or 15 jobs.
@@ -50,14 +50,10 @@ def generate_random_batch_list(num_batches=20, max_job_length=25):
     """
 
     batch_list = []
-    possible_job_counts = [5, 10, 15]
 
     for _ in range(num_batches):
-        # Randomly choose between 5, 10, or 15 jobs for this batch
-        num_jobs = random.choice(possible_job_counts)
-
         # Generate random job lengths between 1 and max_job_length
-        job_list = [random.randint(1, max_job_length) for _ in range(num_jobs)]
+        job_list = [random.randint(1, max_job_length) for _ in range(job_count)]
         batch_list.append(job_list)
 
     return batch_list
