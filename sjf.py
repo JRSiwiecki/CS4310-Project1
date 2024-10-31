@@ -24,10 +24,18 @@ def run_scheduler(batch_list):
                     shortest_job_number = i
 
             print("-----------")
-            print("Job #" + str(shortest_job_number + 1) + " Scheduled")
+            print(
+                "Job #"
+                + str(shortest_job_number + 1)
+                + " Scheduled - "
+                + str(job_list_copy[shortest_job_number])
+                + " Units of Work"
+            )
 
             current_time += job_list[shortest_job_number]
-            job_list_copy[shortest_job_number] = 0
+            job_list_copy[shortest_job_number] = work_on_job(
+                job_list_copy[shortest_job_number]
+            )
             completed_job_indexes.append(shortest_job_number)
 
             job_turnaround_times.append(current_time)

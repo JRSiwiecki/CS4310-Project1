@@ -12,10 +12,16 @@ def run_scheduler(batch_list):
 
         for job_number, job_time in enumerate(job_list):
             print("-----------")
-            print("Job #" + str(job_number + 1) + " Scheduled")
+            print(
+                "Job #"
+                + str(job_number + 1)
+                + " Scheduled - "
+                + str(job_list_copy[job_number])
+                + " Units of Work"
+            )
 
             current_time += job_time
-            job_list_copy[job_number] = 0
+            job_list_copy[job_number] = work_on_job(job_list_copy[job_number])
             completed_job_indexes.append(job_number)
 
             job_turnaround_times.append(current_time)
