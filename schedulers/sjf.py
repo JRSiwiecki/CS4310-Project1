@@ -1,7 +1,7 @@
 """Module containing code to run the SJF scheduler algorithm."""
 
 
-def run_scheduler(batch_list):
+def run_scheduler(batch_list, debug=True):
     """Runs the Shortest-Job-First (SJF) Scheduler algorithm.
     This algorithm compelets the shortest jobs it sees first.
 
@@ -9,14 +9,16 @@ def run_scheduler(batch_list):
         batch_list (List[List[int]]): A list where each inner list contains
         float values representing jobs.
     """
-    print("----------- SJF Scheduler -----------")
+    if debug:
+        print("----------- SJF Scheduler -----------")
 
     average_turnaround_times = []
 
     # Run scheduler for each job list in batch_list
     for batch_number, job_list in enumerate(batch_list):
-        print("##### batch" + str(batch_number + 1) + ".txt #####")
-        print(job_list)
+        if debug:
+            print("##### batch" + str(batch_number + 1) + ".txt #####")
+            print(job_list)
 
         # Use copy of job_list so as to not modify underlying job_list
         job_list_copy = job_list.copy()
@@ -45,37 +47,42 @@ def run_scheduler(batch_list):
                     shortest_job_number = i
 
             # Offset job number by 1 for display for easier understanding
-            print(
-                "\nJob #"
-                + str(shortest_job_number + 1)
-                + " Scheduled - "
-                + str(job_list_copy[shortest_job_number])
-                + " Units of Work"
-            )
+            if debug:
+                print(
+                    "\nJob #"
+                    + str(shortest_job_number + 1)
+                    + " Scheduled - "
+                    + str(job_list_copy[shortest_job_number])
+                    + " Units of Work"
+                )
 
             # No need to check in if job_time left is 0 or not, as SJF
             # will complete whole job as it works on them.
             current_time += job_list[shortest_job_number]
             job_list_copy[shortest_job_number] = work_on_job(
-                job_list_copy[shortest_job_number]
+                job_list_copy[shortest_job_number], debug
             )
             completed_job_indexes.append(shortest_job_number)
 
             job_turnaround_times.append(current_time)
 
-            print("Job #" + str(shortest_job_number + 1) + " Complete")
-            print("Current Time:", current_time)
+            if debug:
+                print("Job #" + str(shortest_job_number + 1) + " Complete")
+                print("Current Time:", current_time)
 
         average_turnaround_time = round(sum(job_turnaround_times) / len(job_list), 2)
         average_turnaround_times.append(average_turnaround_time)
 
-        print("\nAverage Turnaround Time:", average_turnaround_time, "Units of Work")
-        print("----------------------")
+        if debug:
+            print(
+                "\nAverage Turnaround Time:", average_turnaround_time, "Units of Work"
+            )
+            print("----------------------")
 
     return average_turnaround_times
 
 
-def work_on_job(job_time):
+def work_on_job(job_time, debug=True):
     """Do work on job based on job_time. Return the amount of time left on the job.
 
     Args:
@@ -84,5 +91,6 @@ def work_on_job(job_time):
     Returns:
         int: Always returns 0, as in SJF the entire job is completed in one go.
     """
-    print("Doing " + str(job_time) + " Units of Work")
+    if debug:
+        print("Doing " + str(job_time) + " Units of Work")
     return 0
