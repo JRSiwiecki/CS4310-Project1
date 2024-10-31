@@ -9,6 +9,7 @@ def run_scheduler(batch_list, debug=True):
     Args:
         batch_list (List[List[int]]): A list where each inner list contains
         float values representing jobs.
+        debug (bool): Whether or not to use print statements during execution.
     """
     if debug:
         print("----------- Round Robin 5 Scheduler -----------")
@@ -80,6 +81,7 @@ def work_on_job(job_time, debug=True):
 
     Args:
         job_time (int): Length of job.
+        debug (bool): Whether or not to use print statements during execution.
 
     Returns:
         int: Will return 0 or job_time - 5 depending on the amount of work left.
