@@ -1,8 +1,5 @@
-import job_input_reader
-import fcfs
-import sjf
-import rr2
-import rr5
+from utilities import job_input_reader
+from schedulers import fcfs, sjf, rr2, rr5
 
 
 def main():
