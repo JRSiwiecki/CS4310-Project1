@@ -1,5 +1,6 @@
 """Module containing code to run the scheduler algorithms."""
 
+import random
 from schedulers import fcfs, sjf, rr2, rr5
 
 JOB_FOLDER_PATH = "job-files/"
@@ -35,17 +36,61 @@ def job_file_to_array():
     return batch_list
 
 
+def generate_random_batch_list(
+    num_batches=20, max_jobs_per_batch=10, max_job_length=25
+):
+    """
+    Generate a list of random job batches for testing the scheduler.
+
+    Args:
+        num_batches (int): Number of batches to generate
+        max_jobs_per_batch (int): Maximum number of jobs per batch
+        max_job_length (int): Maximum length of each job
+
+    Returns:
+        List[List[int]]: List of job batches, where each batch is a list of job lengths
+    """
+
+    batch_list = []
+
+    for _ in range(num_batches):
+
+        # Generate between 1 and max_jobs_per_batch jobs for this batch
+        num_jobs = random.randint(1, max_jobs_per_batch)
+
+        # Generate random job lengths between 1 and max_job_length
+        job_batch = [random.randint(1, max_job_length) for _ in range(num_jobs)]
+        batch_list.append(job_batch)
+
+    return batch_list
+
+
 def main():
     """_summary_
     Runs job_file_to_array then runs each scheduler.
     Note that we assume that all jobs arrive at the same time (0).
     """
-    batch_list = job_file_to_array()
+    file_batch_list = job_file_to_array()
 
-    fcfs.run_scheduler(batch_list)
-    sjf.run_scheduler(batch_list)
-    rr2.run_scheduler(batch_list)
-    rr5.run_scheduler(batch_list)
+    fcfs.run_scheduler(file_batch_list)
+    sjf.run_scheduler(file_batch_list)
+    rr2.run_scheduler(file_batch_list)
+    rr5.run_scheduler(file_batch_list)
+
+    random_batch_list = generate_random_batch_list()
+
+    # ATT -> Average Turnaround Time
+    fcfs_att = sum(fcfs.run_scheduler(random_batch_list, False)) / len(
+        random_batch_list
+    )
+    sjf_att = sum(sjf.run_scheduler(random_batch_list, False)) / len(random_batch_list)
+    rr2_att = sum(rr2.run_scheduler(random_batch_list, False)) / len(random_batch_list)
+    rr5_att = sum(rr5.run_scheduler(random_batch_list, False)) / len(random_batch_list)
+
+    print("FCFS Average Turnaround Time:", round(fcfs_att, 2), "Units of Work")
+    print("SJF Average Turnaround Time:", round(sjf_att, 2), "Units of Work")
+    print("RR2 Average Turnaround Time:", round(rr2_att, 2), "Units of Work")
+    print("RR5 Average Turnaround Time:", round(rr5_att, 2), "Units of Work")
 
 
 if __name__ == "__main__":
