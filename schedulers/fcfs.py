@@ -7,7 +7,7 @@ def run_scheduler(batch_list, debug=True):
 
     Args:
         batch_list (List[List[int]]): A list where each inner list contains
-        float values representing jobs.
+        integer values representing jobs.
         debug (bool): Whether or not to use print statements during execution.
     """
     if debug:

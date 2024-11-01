@@ -60,7 +60,7 @@ def generate_random_batch_list(num_batches=20, max_job_length=25, job_count=5):
 
 
 def main():
-    """_summary_
+    """
     Runs job_file_to_array then runs each scheduler.
     Note that we assume that all jobs arrive at the same time (0).
     """
