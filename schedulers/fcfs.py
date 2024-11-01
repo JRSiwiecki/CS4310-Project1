@@ -35,7 +35,7 @@ def run_scheduler(batch_list, debug=True):
             start_time = current_time
             current_time += job_time
             end_time = current_time
-            job_list_copy[job_number] = work_on_job(job_list_copy[job_number], debug)
+            job_list_copy[job_number] = work_on_job(job_list_copy[job_number])
             completed_job_indexes.append(job_number)
 
             job_turnaround_times.append(current_time)
@@ -53,12 +53,11 @@ def run_scheduler(batch_list, debug=True):
     return average_turnaround_times
 
 
-def work_on_job(job_time, debug=True):
+def work_on_job(job_time):
     """Do work on job based on job_time. Return the amount of time left on the job.
 
     Args:
         job_time (int): Length of job.
-        debug (bool): Whether or not to use print statements during execution.
 
     Returns:
         int: Always returns 0, as in FCFS the entire job is completed in one go.

@@ -41,7 +41,7 @@ def run_scheduler(batch_list, debug=True):
                 work_done = min(5, job_list_copy[current_job_number])
                 current_time += work_done
                 job_list_copy[current_job_number] = work_on_job(
-                    job_list_copy[current_job_number], debug
+                    job_list_copy[current_job_number]
                 )
                 end_time = current_time
 
@@ -67,12 +67,11 @@ def run_scheduler(batch_list, debug=True):
     return average_turnaround_times
 
 
-def work_on_job(job_time, debug=True):
+def work_on_job(job_time):
     """Do work on job based on job_time. Return the amount of time left on the job.
 
     Args:
         job_time (int): Length of job.
-        debug (bool): Whether or not to use print statements during execution.
 
     Returns:
         int: Will return 0 or job_time - 5 depending on the amount of work left.
